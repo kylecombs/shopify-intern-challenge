@@ -30,11 +30,11 @@ code {
 } */
 
 .animateStroke {
-  animation: stroke-animation 2s ease-in-out forwards;
+  animation: stroke-animation 0.5s ease-in-out forwards;
 }
 
 .animateBackground {
-  animation: fade-animation 2s ease-in-out forwards;
+  animation: fade-animation 1s ease-in-out forwards;
 }
 
 @keyframes stroke-animation {
