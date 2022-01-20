@@ -1,4 +1,4 @@
-import { Image, ImageContainer } from '../styled';
+import { Image, ImageContainer } from '../styled/styled';
 
 export function ImageView({ image, inModal }) {
   if (!image) return <div>Image not found</div>;

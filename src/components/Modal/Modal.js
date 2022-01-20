@@ -3,8 +3,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useRef } from 'react';
 import { Dialog } from '@reach/dialog';
 import { ImageView } from '../ImageView/ImageView';
-import { ModalStyled } from '../styled';
-import { PostGrid, InfoGrid } from '../PostGrid/PostGrid';
+import { ModalStyled } from '../styled/styled';
+import { PostGrid, InfoGrid } from '../styled/styled';
 
 export function Modal({ posts }) {
   let navigate = useNavigate();

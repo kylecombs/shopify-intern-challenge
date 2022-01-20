@@ -1,63 +1,53 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import styled, { css } from 'styled-components';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
+import Lottie from 'react-lottie';
+import animationData from '../../lotties/29238-rocket-in-space-transparent-background.json';
+import Heart from '../Heart/Heart';
+import { ImageLink, PhotoGrid, LoadingContainer } from '../styled/styled';
 
-const PhotoGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 305px);
-  justify-content: center;
-  gap: 20px;
-  grid-auto-rows: 305px;
-  ${({ cascade }) =>
-    cascade &&
-    css`
-      grid-auto-rows: 200px;
-      grid-gap: 5px;
-    `}
-  @media (max-width: 990px) {
-    gap: 5px;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: calc(33vw - 10px);
-  }
-`;
-
-const ImageLink = styled(Link)`
-  background: no-repeat center/150% url(/img/${({ index }) => index}.jpeg);
-  :hover {
-    opacity: 0.7;
-  }
-  ${({ cascade }) =>
-    cascade &&
-    css`
-      background-size: cover;
-      &:nth-of-type(2n) {
-        grid-row-start: span 2;
-      }
-    `}
-`;
-
-export function Gallery({ match, location, posts }) {
-  // console.log(location);
-  // const cascade = location.search === '?type=cascade';
+export default function Gallery({ posts }) {
+  let location = useLocation();
   return (
-    <div>
-      <PhotoGrid>
-        {posts.map(
-          (image, index) =>
-            image.media_type === 'image' && (
-              <ImageLink
-                key={index}
-                index={index}
-                to={{
-                  pathname: `/img/${index}`,
-                  // this is the trick!
-                  state: { modal: true },
-                }}
-              ></ImageLink>
-            )
-        )}
-      </PhotoGrid>
+    <div style={{ padding: '0 24px' }}>
+      {posts.length ? (
+        <PhotoGrid>
+          {posts.map(
+            (image, index) =>
+              image.media_type === 'image' && (
+                <ImageLink
+                  duration={Math.random() * 1.5 + 0.6}
+                  delay={Math.random() * 1.5}
+                  key={index}
+                  to={`/img/${index}`}
+                  url={image.url}
+                  state={{ backgroundLocation: location }}
+                >
+                  <div>
+                    <p>{image.date}</p>
+                    <p>{image.title}</p>
+                  </div>
+                  <Heart />
+                </ImageLink>
+              )
+          )}
+        </PhotoGrid>
+      ) : (
+        <LoadingContainer>
+          <Lottie
+            options={{
+              loop: true,
+              autoplay: true,
+              animationData: animationData,
+              rendererSettings: {
+                preserveAspectRatio: 'xMidYMid slice',
+              },
+            }}
+            height={400}
+            width={400}
+          />
+          <h1>LOADING . . .</h1>
+        </LoadingContainer>
+      )}
       <Outlet />
     </div>
   );

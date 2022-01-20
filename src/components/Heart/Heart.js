@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HeartIcon, HeartPath, HeartSVG } from '../styled';
+import { HeartIcon, HeartPath, HeartSVG } from '../styled/styled';
 
 export default function Heart() {
   const [clicked, setClicked] = useState(false);
