@@ -1,15 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
-import {
-  Routes,
-  Route,
-  Outlet,
-  Link,
-  useLocation,
-  useNavigate,
-  useParams,
-} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Routes, Route, Outlet, Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
-import { Dialog } from '@reach/dialog';
 import '@reach/dialog/styles.css';
 import { ImageLink, PhotoGrid, LoadingContainer } from './components/styled';
 import useDate from './components/hooks/useDate';

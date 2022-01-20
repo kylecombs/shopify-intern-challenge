@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
-import { HeartBackground, HeartIcon, HeartPath, HeartSVG } from '../styled';
+import { HeartIcon, HeartPath, HeartSVG } from '../styled';
 
 export default function Heart() {
   const [clicked, setClicked] = useState(false);
 
   const handleClick = (e) => {
     e.preventDefault();
-    setClicked(true);
+    if (clicked) {
+      setClicked(false);
+    } else {
+      setClicked(true);
+    }
   };
 
   return (
