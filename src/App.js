@@ -14,10 +14,6 @@ export default function App() {
   let location = useLocation();
   let state = location.state;
 
-  // The `backgroundLocation` state is the location that we were at when one of
-  // the gallery links was clicked. If it's there, use it as the location for
-  // the <Routes> so we show the gallery in the background, behind the modal.
-
   const [startDate, endDate] = useDate();
   const [posts, setPosts] = useState([]);
   const key = 'DgpckBSuToPA2GkP8yi0ZkYEYkuNGcPD3AHpVYzK';
@@ -37,7 +33,6 @@ export default function App() {
       <Nav posts={posts} setPosts={setPosts} />
       <Routes location={state?.backgroundLocation || location}>
         <Route path="/" element={<Gallery posts={posts} />}>
-          {/* <Route path="/img/:id" element={<Modal posts={posts} />} /> */}
           <Route path="*" element={<NoMatch />} />
         </Route>
       </Routes>
