@@ -15,6 +15,7 @@ import { ImageLink, PhotoGrid, LoadingContainer } from './components/styled';
 import useDate from './components/hooks/useDate';
 import { Modal } from './components/Modal/Modal';
 import Nav from './components/Nav';
+import Heart from './components/Heart/Heart';
 import Lottie from 'react-lottie';
 import animationData from './lotties/29238-rocket-in-space-transparent-background.json';
 
@@ -79,6 +80,7 @@ function Gallery({ posts }) {
                     <p>{image.date}</p>
                     <p>{image.title}</p>
                   </div>
+                  <Heart />
                 </ImageLink>
               )
           )}
